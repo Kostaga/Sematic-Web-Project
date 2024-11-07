@@ -1,0 +1,109 @@
+# baseURI: http://example.org/socialNetwork
+
+@prefix : <http://example.org/socialNetwork#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix socialNetwork: <http://example.org/socialNetwork#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/socialNetwork>
+  a owl:Ontology ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+socialNetwork:Account
+  a rdfs:Class ;
+  rdfs:subClassOf rdfs:Resource ;
+.
+socialNetwork:Administrator
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Account ;
+.
+socialNetwork:Advertisement
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Content ;
+.
+socialNetwork:Album
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Content ;
+.
+socialNetwork:Announcement
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Post ;
+.
+socialNetwork:Business
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Account ;
+.
+socialNetwork:Content
+  a rdfs:Class ;
+  rdfs:subClassOf rdfs:Resource ;
+.
+socialNetwork:Event
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Content ;
+.
+socialNetwork:Group
+  a rdfs:Class ;
+  rdfs:subClassOf rdfs:Resource ;
+.
+socialNetwork:GroupMember
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Person ;
+.
+socialNetwork:ImagePost
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Post ;
+.
+socialNetwork:Live
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Content ;
+.
+socialNetwork:Music
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Content ;
+.
+socialNetwork:Person
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Account ;
+.
+socialNetwork:PersonInRelationship
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Person ;
+.
+socialNetwork:Poll
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Content ;
+.
+socialNetwork:Post
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Content ;
+.
+socialNetwork:Product
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Advertisement ;
+.
+socialNetwork:Reel
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:VideoPost ;
+.
+socialNetwork:Review
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Post ;
+.
+socialNetwork:Story
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Content ;
+.
+socialNetwork:TextPost
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Post ;
+.
+socialNetwork:User
+  a rdfs:Class ;
+  rdfs:subClassOf rdfs:Resource ;
+.
+socialNetwork:VideoPost
+  a rdfs:Class ;
+  rdfs:subClassOf socialNetwork:Post ;
+.
