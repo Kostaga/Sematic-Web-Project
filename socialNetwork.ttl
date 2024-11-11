@@ -4,106 +4,315 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix socialNetwork: <http://example.org/socialNetwork#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/socialNetwork>
   a owl:Ontology ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
-socialNetwork:Account
+:Account
   a rdfs:Class ;
   rdfs:subClassOf rdfs:Resource ;
 .
-socialNetwork:Administrator
+:Administrator
   a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Account ;
+  rdfs:subClassOf :Account ;
 .
-socialNetwork:Advertisement
+:Advertisement
   a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Content ;
+  rdfs:subClassOf :Content ;
 .
-socialNetwork:Album
+:Album
   a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Content ;
+  rdfs:subClassOf :Content ;
 .
-socialNetwork:Announcement
+:Announcement
   a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Post ;
+  rdfs:subClassOf :Post ;
 .
-socialNetwork:Business
+:Business
   a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Account ;
+  rdfs:subClassOf :Account ;
 .
-socialNetwork:Content
+:BusinessInformation
+  a rdfs:Class ;
+  rdfs:subClassOf :Information ;
+.
+:Comment
   a rdfs:Class ;
   rdfs:subClassOf rdfs:Resource ;
 .
-socialNetwork:Event
-  a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Content ;
-.
-socialNetwork:Group
+:Content
   a rdfs:Class ;
   rdfs:subClassOf rdfs:Resource ;
 .
-socialNetwork:GroupMember
+:Event
   a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Person ;
+  rdfs:subClassOf :Content ;
 .
-socialNetwork:ImagePost
-  a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Post ;
-.
-socialNetwork:Live
-  a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Content ;
-.
-socialNetwork:Music
-  a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Content ;
-.
-socialNetwork:Person
-  a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Account ;
-.
-socialNetwork:PersonInRelationship
-  a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Person ;
-.
-socialNetwork:Poll
-  a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Content ;
-.
-socialNetwork:Post
-  a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Content ;
-.
-socialNetwork:Product
-  a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Advertisement ;
-.
-socialNetwork:Reel
-  a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:VideoPost ;
-.
-socialNetwork:Review
-  a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Post ;
-.
-socialNetwork:Story
-  a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Content ;
-.
-socialNetwork:TextPost
-  a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Post ;
-.
-socialNetwork:User
+:Group
   a rdfs:Class ;
   rdfs:subClassOf rdfs:Resource ;
 .
-socialNetwork:VideoPost
+:GroupMember
   a rdfs:Class ;
-  rdfs:subClassOf socialNetwork:Post ;
+  rdfs:subClassOf :Person ;
+.
+:Hobbies
+  a rdfs:Class ;
+  rdfs:subClassOf :Interests ;
+.
+:ImagePost
+  a rdfs:Class ;
+  rdfs:subClassOf :Post ;
+.
+:Information
+  a rdfs:Class ;
+  rdfs:subClassOf rdfs:Resource ;
+.
+:Interests
+  a rdfs:Class ;
+  rdfs:subClassOf :PersonInformation ;
+.
+:Live
+  a rdfs:Class ;
+  rdfs:subClassOf :Content ;
+.
+:Message
+  a rdfs:Class ;
+  rdfs:subClassOf rdfs:Resource ;
+.
+:MovieInterests
+  a rdfs:Class ;
+  rdfs:subClassOf :Interests ;
+.
+:Music
+  a rdfs:Class ;
+  rdfs:subClassOf :Content ;
+.
+:MusicInterests
+  a rdfs:Class ;
+  rdfs:subClassOf :Interests ;
+.
+:MusicTitle
+  a rdf:Property ;
+  rdfs:domain :Music ;
+  rdfs:range xsd:string ;
+.
+:Page
+  a rdfs:Class ;
+  rdfs:subClassOf rdfs:Resource ;
+.
+:Person
+  a rdfs:Class ;
+  rdfs:subClassOf :User ;
+.
+:PersonInRelationship
+  a rdfs:Class ;
+  rdfs:subClassOf :Person ;
+.
+:PersonInformation
+  a rdfs:Class ;
+  rdfs:subClassOf :Information ;
+.
+:PhotoMessage
+  a rdfs:Class ;
+  rdfs:subClassOf :Message ;
+.
+:Poll
+  a rdfs:Class ;
+  rdfs:subClassOf :Content ;
+.
+:Post
+  a rdfs:Class ;
+  rdfs:subClassOf :Content ;
+.
+:Product
+  a rdfs:Class ;
+  rdfs:subClassOf :Advertisement ;
+.
+:Reel
+  a rdfs:Class ;
+  rdfs:subClassOf :VideoPost ;
+.
+:Review
+  a rdfs:Class ;
+  rdfs:subClassOf :Post ;
+.
+:Story
+  a rdfs:Class ;
+  rdfs:subClassOf :Content ;
+.
+:TextMessage
+  a rdfs:Class ;
+  rdfs:subClassOf :Message ;
+.
+:TextPost
+  a rdfs:Class ;
+  rdfs:subClassOf :Post ;
+.
+:User
+  a rdfs:Class ;
+  rdfs:subClassOf :Account ;
+.
+:VerifiedAccount
+  a rdfs:Class ;
+  rdfs:subClassOf :Account ;
+.
+:VideoMessage
+  a rdfs:Class ;
+  rdfs:subClassOf :Message ;
+.
+:VideoPost
+  a rdfs:Class ;
+  rdfs:subClassOf :Post ;
+.
+:VoiceMessage
+  a rdfs:Class ;
+  rdfs:subClassOf :Message ;
+.
+:age
+  a rdf:Property ;
+  rdfs:domain :Person ;
+  rdfs:range xsd:integer ;
+  rdfs:subPropertyOf :info ;
+.
+:closeFriend
+  a rdf:Property ;
+  rdfs:domain :Person ;
+  rdfs:range :Person ;
+.
+:commentText
+  a rdf:Property ;
+  rdfs:domain :Comment ;
+  rdfs:range xsd:string ;
+.
+:country
+  a rdf:Property ;
+  rdfs:domain :Person ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf :info ;
+.
+:dateOfBirth
+  a rdf:Property ;
+  rdfs:domain :Person ;
+  rdfs:range xsd:date ;
+  rdfs:subPropertyOf :info ;
+.
+:description
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:domain :Page ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf :info ;
+.
+:duration
+  a rdf:Property ;
+  rdfs:domain :VideoPost ;
+  rdfs:range xsd:decimal ;
+.
+:email
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range xsd:string ;
+.
+:eventDate
+  a rdf:Property ;
+  rdfs:domain :Event ;
+  rdfs:range xsd:date ;
+.
+:eventName
+  a rdf:Property ;
+  rdfs:domain :Event ;
+  rdfs:range xsd:string ;
+.
+:gender
+  a rdf:Property ;
+  rdfs:domain :Person ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf :info ;
+.
+:groupName
+  a rdf:Property ;
+  rdfs:domain :Group ;
+  rdfs:range xsd:string ;
+.
+:info
+  a rdf:Property ;
+  rdfs:domain :Person ;
+  rdfs:range xsd:string ;
+.
+:label
+  a rdf:Property ;
+  rdfs:domain :Advertisement ;
+  rdfs:domain :Post ;
+  rdfs:domain :Story ;
+  rdfs:range xsd:string ;
+.
+:name
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:domain :Group ;
+  rdfs:domain :Page ;
+  rdfs:subPropertyOf :info ;
+.
+:pageName
+  a rdf:Property ;
+  rdfs:domain :Page ;
+  rdfs:range xsd:string ;
+.
+:password
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range xsd:string ;
+.
+:pollOptions
+  a rdf:Property ;
+  rdfs:domain :Poll ;
+  rdfs:range xsd:string ;
+.
+:postDate
+  a rdf:Property ;
+  rdfs:domain :Content ;
+  rdfs:range xsd:dateTime ;
+.
+:postTag
+  a rdf:Property ;
+  rdfs:domain :Content ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf :label ;
+.
+:productName
+  a rdf:Property ;
+  rdfs:domain :Product ;
+  rdfs:range xsd:string ;
+.
+:productPrice
+  a rdf:Property ;
+  rdfs:domain :Product ;
+  rdfs:range xsd:decimal ;
+.
+:registrationDate
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:domain :Group ;
+  rdfs:domain :Page ;
+  rdfs:range xsd:date ;
+.
+:relationshipStatus
+  a rdf:Property ;
+  rdfs:domain :Person ;
+  rdfs:range xsd:string ;
+.
+:username
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range xsd:string ;
+.
+:visibility
+  a rdf:Property ;
+  rdfs:domain :Content ;
+  rdfs:domain :Group ;
+  rdfs:domain :Page ;
+  rdfs:range xsd:string ;
 .
