@@ -42,13 +42,67 @@
   a rdfs:Class ;
   rdfs:subClassOf rdfs:Resource ;
 .
+:Comment_1
+  a :Comment ;
+  :commentText "random comment" ;
+  :writtenBy :Person_2 ;
+.
+:Comment_2
+  a :Comment ;
+  :commentText "Looking forward to this event!" ;
+  :writtenBy :Person_3 ;
+.
+:Comment_3
+  a :Comment ;
+  :commentText "Great post, very insightful!" ;
+  :writtenBy :Person_4 ;
+.
+:Comment_4
+  a :Comment ;
+  :commentText "Can anyone recommend some resources?" ;
+  :writtenBy :Person_5 ;
+.
+:Comment_5
+  a :Comment ;
+  :commentText "This made my day, thank you!" ;
+  :writtenBy :Person_5 ;
+.
 :Content
   a rdfs:Class ;
   rdfs:subClassOf rdfs:Resource ;
 .
+:Content_1
+  a :Content ;
+.
+:Content_2
+  a :Content ;
+.
+:Content_3
+  a :Content ;
+.
+:Content_5
+  a :Content ;
+.
+:Content_6
+  a :Content ;
+.
 :Event
   a rdfs:Class ;
   rdfs:subClassOf :Content ;
+.
+:Event_1
+  a :Event ;
+  :eventDate "2024-11-30"^^xsd:date ;
+  :eventName "Techno Party" ;
+  :postDate "2024-11-12T16:03:08.145"^^xsd:dateTime ;
+  :postTag "Party,Music,Dance" ;
+.
+:Event_2
+  a :Event ;
+  :eventDate "2024-12-05"^^xsd:date ;
+  :eventName "Jazz Night" ;
+  :postDate "2024-11-11T19:00:00.000"^^xsd:dateTime ;
+  :postTag "Music,Live,Concert" ;
 .
 :Group
   a rdfs:Class ;
@@ -58,6 +112,14 @@
   a rdfs:Class ;
   rdfs:subClassOf :Person ;
 .
+:Group_1
+  a :Group ;
+  :groupName "Nature Enthusiasts" ;
+.
+:Group_2
+  a :Group ;
+  :groupName "Tech Innovators" ;
+.
 :Hobbies
   a rdfs:Class ;
   rdfs:subClassOf :Interests ;
@@ -65,6 +127,16 @@
 :ImagePost
   a rdfs:Class ;
   rdfs:subClassOf :Post ;
+.
+:ImagePost_1
+  a :ImagePost ;
+  :postDate "2024-10-15"^^xsd:date ;
+  :writtenBy :Person_2 ;
+.
+:ImagePost_2
+  a :ImagePost ;
+  :postDate "2024-05-05"^^xsd:date ;
+  :writtenBy :Person_5 ;
 .
 :Information
   a rdfs:Class ;
@@ -81,6 +153,15 @@
 :Message
   a rdfs:Class ;
   rdfs:subClassOf rdfs:Resource ;
+.
+:Message_1
+  a :Message ;
+.
+:Message_2
+  a :Message ;
+.
+:Message_3
+  a :Message ;
 .
 :MovieInterests
   a rdfs:Class ;
@@ -103,6 +184,22 @@
   a rdfs:Class ;
   rdfs:subClassOf rdfs:Resource ;
 .
+:Page_1
+  a :Page ;
+  :pageName "Global Travel Blog" ;
+.
+:Page_2
+  a :Page ;
+  :pageName "Global Environmental News" ;
+.
+:Page_3
+  a :Page ;
+  :pageName "Oceanic Conservation" ;
+.
+:Page_4
+  a :Page ;
+  :pageName "Wanderlust Chronicles" ;
+.
 :Person
   a rdfs:Class ;
   rdfs:subClassOf :User ;
@@ -115,6 +212,120 @@
   a rdfs:Class ;
   rdfs:subClassOf :Information ;
 .
+:Person_1
+  a :Person ;
+  :age 21 ;
+  :attends :Event_1 ;
+  :closeFriend :Person_2 ;
+  :country "Greece" ;
+  :dateOfBirth "1996-10-12"^^xsd:date ;
+  :description "Fan of dragon ball" ;
+  :email "test@gmail.com" ;
+  :familyWith :Person_4 ;
+  :follows :Page_1 ;
+  :forwards :Message_1 ;
+  :friend :Person_3 ;
+  :gender "Male" ;
+  :interacts :Content_1 ;
+  :isInterestedIn :Poll_1 ;
+  :isPartOf :Group_1 ;
+  :isTaggedIn :TextPost_1 ;
+  :likes :ImagePost_1 ;
+  :name "George" ;
+  :posts :Content_3 ;
+  :reacts :Content_2 ;
+  :relationshipStatus "Married" ;
+  :replies :Message_1 ;
+  :reports :ImagePost_2 ;
+  :sends :Message_3 ;
+  :shares :Product_1 ;
+  :username "Detective Pyro" ;
+  :writes :Comment_1 ;
+.
+:Person_2
+  a :Person ;
+  :age 24 ;
+  :attends :Poll_1 ;
+  :closeFriend :Person_1 ;
+  :country "Italy" ;
+  :dateOfBirth "1998-05-22"^^xsd:date ;
+  :description "Loves cooking and hiking" ;
+  :email "chef_italiano@gmail.com" ;
+  :familyWith :Person_1 ;
+  :follows :Page_2 ;
+  :friend :Person_3 ;
+  :gender "Female" ;
+  :info "Kalamaria, University Student, born in February" ;
+  :interacts :Content_3 ;
+  :isInterestedIn :Event_2 ;
+  :isPartOf :Group_2 ;
+  :likes :ImagePost_2 ;
+  :name "Luca" ;
+  :password "1235" ;
+  :posts :Content_2 ;
+  :reacts :Content_1 ;
+  :relationshipStatus "Complicated" ;
+  :replies :Message_3 ;
+  :reports :Content_6 ;
+  :sends :Message_2 ;
+  :shares :Content_5 ;
+  :username "CucinaKing" ;
+.
+:Person_3
+  a :Person ;
+  :age 30 ;
+  :attends :Event_1 ;
+  :closeFriend :Person_2 ;
+  :country "Japan" ;
+  :dateOfBirth "1994-07-15"^^xsd:date ;
+  :description "Gamer and tech enthusiast" ;
+  :email "gamer_94@gmail.com" ;
+  :familyWith :Person_1 ;
+  :follows :Page_3 ;
+  :forwards :Message_2 ;
+  :friend :Person_4 ;
+  :interacts :Content_5 ;
+  :isInterestedIn :Event_2 ;
+  :isPartOf :Group_2 ;
+  :likes :ImagePost_2 ;
+  :name "Hiro" ;
+  :posts :Content_1 ;
+  :reacts :Content_3 ;
+  :relationshipStatus "Single" ;
+  :replies :Message_2 ;
+  :reports :VideoPost_2 ;
+  :sends :Message_1 ;
+  :shares :Poll_1 ;
+  :username "ShogunGamer" ;
+  :writes :Comment_3 ;
+.
+:Person_4
+  a :Person ;
+.
+:Person_5
+  a :Person ;
+  a :VerifiedAccount ;
+  :age 32 ;
+  :attends :Event_1 ;
+  :closeFriend :Person_1 ;
+  :country "Brazil" ;
+  :dateOfBirth "1991-03-18"^^xsd:date ;
+  :description "Environmental scientist and activist" ;
+  :email "eco_warrior@example.com" ;
+  :familyWith :Person_6 ;
+  :follows :Page_4 ;
+  :friend :Person_4 ;
+  :gender "Female" ;
+  :isInterestedIn :Event_1 ;
+  :isPartOf :Group_1 ;
+  :likes :ImagePost_2 ;
+  :posts :VideoPost_2 ;
+  :reacts :Review_1 ;
+  :relationshipStatus "Single" ;
+  :sends :VoiceMessage_1 ;
+  :username "EcoWarrior" ;
+  :writes :Announcement_1 ;
+.
 :PhotoMessage
   a rdfs:Class ;
   rdfs:subClassOf :Message ;
@@ -122,6 +333,13 @@
 :Poll
   a rdfs:Class ;
   rdfs:subClassOf :Content ;
+.
+:Poll_1
+  a :Poll ;
+  :attends :Person_2 ;
+  :eventDate "2024-11-12"^^xsd:date ;
+  :eventName "Public Opinion Poll on Climate Change" ;
+  :pollOptions "Strongly Agree, Agree, Neutral, Disagree, Strongly Disagree" ;
 .
 :Post
   a rdfs:Class ;
@@ -131,6 +349,11 @@
   a rdfs:Class ;
   rdfs:subClassOf :Advertisement ;
 .
+:Product_1
+  a :Product ;
+  :productName "Wireless Headphones" ;
+  :productPrice 99.99 ;
+.
 :Reel
   a rdfs:Class ;
   rdfs:subClassOf :VideoPost ;
@@ -138,6 +361,12 @@
 :Review
   a rdfs:Class ;
   rdfs:subClassOf :Post ;
+.
+:Review_1
+  a :Review ;
+  :postDate "2024-09-30"^^xsd:date ;
+  :productName "Portable Charger" ;
+  :writtenBy :Person_2 ;
 .
 :Story
   a rdfs:Class ;
@@ -150,6 +379,12 @@
 :TextPost
   a rdfs:Class ;
   rdfs:subClassOf :Post ;
+.
+:TextPost_1
+  a :TextPost ;
+  :postDate "2024-11-10"^^xsd:date ;
+  :postTag "Travel, Adventure" ;
+  :writtenBy :Person_1 ;
 .
 :User
   a rdfs:Class ;
@@ -167,9 +402,26 @@
   a rdfs:Class ;
   rdfs:subClassOf :Post ;
 .
+:VideoPost_1
+  a :VideoPost ;
+  :duration 3.5 ;
+  :postDate "2024-11-12T16:15:12.321"^^xsd:dateTime ;
+  :postTag "Funny, Cats, Dogs" ;
+.
+:VideoPost_2
+  a :VideoPost ;
+  :duration 1.2 ;
+  :postDate "2024-11-12T16:15:54.006"^^xsd:dateTime ;
+  :postTag "Memes" ;
+.
 :VoiceMessage
   a rdfs:Class ;
   rdfs:subClassOf :Message ;
+.
+:advertises
+  a rdf:Property ;
+  rdfs:domain :Business ;
+  rdfs:range :Product ;
 .
 :age
   a rdf:Property ;
@@ -177,10 +429,16 @@
   rdfs:range xsd:integer ;
   rdfs:subPropertyOf :info ;
 .
+:attends
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range :Event ;
+.
 :closeFriend
   a rdf:Property ;
   rdfs:domain :Person ;
   rdfs:range :Person ;
+  rdfs:subPropertyOf :friend ;
 .
 :commentText
   a rdf:Property ;
@@ -226,6 +484,28 @@
   rdfs:domain :Event ;
   rdfs:range xsd:string ;
 .
+:familyWith
+  a rdf:Property ;
+  rdfs:domain :Person ;
+  rdfs:range :Person ;
+  rdfs:subPropertyOf :friend ;
+.
+:follows
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range :Page ;
+.
+:forwards
+  a rdf:Property ;
+  rdfs:domain :Person ;
+  rdfs:range :Message ;
+  rdfs:subPropertyOf :sends ;
+.
+:friend
+  a rdf:Property ;
+  rdfs:domain :Person ;
+  rdfs:range :Person ;
+.
 :gender
   a rdf:Property ;
   rdfs:domain :Person ;
@@ -237,10 +517,36 @@
   rdfs:domain :Group ;
   rdfs:range xsd:string ;
 .
+:inRelationshipWith
+  a rdf:Property ;
+  rdfs:domain :PersonInRelationship ;
+  rdfs:range :PersonInRelationship ;
+  rdfs:subPropertyOf :friend ;
+.
 :info
   a rdf:Property ;
   rdfs:domain :Person ;
   rdfs:range xsd:string ;
+.
+:interacts
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range :Content ;
+.
+:isInterestedIn
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range :Event ;
+.
+:isPartOf
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range :Group ;
+.
+:isTaggedIn
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range :Content ;
 .
 :label
   a rdf:Property ;
@@ -248,6 +554,12 @@
   rdfs:domain :Post ;
   rdfs:domain :Story ;
   rdfs:range xsd:string ;
+.
+:likes
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range :Content ;
+  rdfs:subPropertyOf :interacts ;
 .
 :name
   a rdf:Property ;
@@ -282,6 +594,11 @@
   rdfs:range xsd:string ;
   rdfs:subPropertyOf :label ;
 .
+:posts
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range :Content ;
+.
 :productName
   a rdf:Property ;
   rdfs:domain :Product ;
@@ -291,6 +608,12 @@
   a rdf:Property ;
   rdfs:domain :Product ;
   rdfs:range xsd:decimal ;
+.
+:reacts
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range :Content ;
+  rdfs:subPropertyOf :interacts ;
 .
 :registrationDate
   a rdf:Property ;
@@ -304,6 +627,33 @@
   rdfs:domain :Person ;
   rdfs:range xsd:string ;
 .
+:replies
+  a rdf:Property ;
+  rdfs:domain :Person ;
+  rdfs:range :Message ;
+  rdfs:subPropertyOf :sends ;
+.
+:reports
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range :Content ;
+  rdfs:subPropertyOf :interacts ;
+.
+:sends
+  a rdf:Property ;
+  rdfs:domain :Person ;
+  rdfs:range :Message ;
+.
+:sentTo
+  a rdf:Property ;
+  rdfs:domain :Message ;
+  rdfs:range :Person ;
+.
+:shares
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range :Content ;
+.
 :username
   a rdf:Property ;
   rdfs:domain :Account ;
@@ -315,4 +665,14 @@
   rdfs:domain :Group ;
   rdfs:domain :Page ;
   rdfs:range xsd:string ;
+.
+:writes
+  a rdf:Property ;
+  rdfs:domain :Account ;
+  rdfs:range :Comment ;
+.
+:writtenBy
+  a rdf:Property ;
+  rdfs:domain :Comment ;
+  rdfs:range :Account ;
 .
