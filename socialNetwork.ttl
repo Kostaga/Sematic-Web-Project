@@ -5,10 +5,12 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spin: <http://spinrdf.org/spin#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/socialNetwork>
   a owl:Ontology ;
+  spin:imports <http://topbraid.org/spin/rdfsplus> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
 :Account
@@ -73,7 +75,6 @@
   a :Album ;
   :postDate "2024-09-18T15:21:36.258"^^xsd:dateTime ;
   :postTag "Beers, Fun, Karaoke" ;
-  :postedBy :Person_2 ;
 .
 :Announcement
   a rdfs:Class ;
@@ -82,7 +83,6 @@
 :Announcement_1
   a :Announcement ;
   :postDate "2024-11-12T20:37:34.093"^^xsd:dateTime ;
-  :postedBy :Person_2 ;
 .
 :Business
   a rdfs:Class ;
@@ -119,32 +119,26 @@
 .
 :Comment_1
   a :Comment ;
-  :writtenBy :Person_2 ;
   :writtenFor :Poll_1 ;
 .
 :Comment_2
   a :Comment ;
-  :writtenBy :Person_3 ;
   :writtenFor :Event_2 ;
 .
 :Comment_3
   a :Comment ;
-  :writtenBy :Person_4 ;
   :writtenFor :Event_2 ;
 .
 :Comment_4
   a :Comment ;
-  :writtenBy :Person_5 ;
   :writtenFor :VideoPost_1 ;
 .
 :Comment_5
   a :Comment ;
-  :writtenBy :Person_5 ;
   :writtenFor :ImagePost_1 ;
 .
 :Comment_6
   a :Comment ;
-  :writtenBy :Business_1 ;
   :writtenFor :Link_1 ;
 .
 :Content
@@ -196,14 +190,10 @@
 :ImagePost_1
   a :ImagePost ;
   :postDate "2024-10-15"^^xsd:date ;
-  :postedBy :Person_5 ;
-  :writtenBy :Person_2 ;
 .
 :ImagePost_2
   a :ImagePost ;
   :postDate "2024-05-05"^^xsd:date ;
-  :postedBy :Person_5 ;
-  :writtenBy :Person_5 ;
 .
 :Interest
   a rdfs:Class ;
@@ -257,7 +247,6 @@
   a :Link ;
   :postDate "2023-11-12T21:38:34.724"^^xsd:dateTime ;
   :postTag "Motorcycle, Helmets, Safe Driving" ;
-  :postedBy :Business_1 ;
   :url "https://www.motoraid.eu/helmets/shoei-gt-air-3-scenario-tc-5?sort=p.price&order=ASC" ;
 .
 :Link_2
@@ -303,7 +292,6 @@
   :musicTitle "Never Gonna Give You Up" ;
   :postDate "2024-11-12T21:12:35.899"^^xsd:dateTime ;
   :postTag "bestmusic" ;
-  :postedBy :Person_5 ;
 .
 :Music_2
   a :Music ;
@@ -342,7 +330,9 @@
   :familyWith :Person_4 ;
   :follows :Page_1 ;
   :forwards :Message_1 ;
+  :friend :Person_2 ;
   :friend :Person_3 ;
+  :friend :Person_4 ;
   :hasInterest :Interest_6 ;
   :hasInterest :Interest_7 ;
   :hasInterest :Interest_8 ;
@@ -481,7 +471,6 @@
   :eventName "Public Opinion Poll on Climate Change" ;
   :pollOptions "Strongly Agree, Agree, Neutral, Disagree, Strongly Disagree" ;
   :postDate "2024-10-11T15:25:53.641"^^xsd:dateTime ;
-  :postedBy :Person_4 ;
 .
 :Post
   a rdfs:Class ;
@@ -497,6 +486,18 @@
   :productName "Wireless Headphones" ;
   :productPrice 99.99 ;
 .
+:Product_2
+  a :Product ;
+  :postDate "2024-10-07T15:21:17.973"^^xsd:dateTime ;
+  :productName "Motorcycle Helmet" ;
+  :productPrice "150"^^xsd:decimal ;
+.
+:Product_3
+  a :Product ;
+  :postDate "2024-11-07T15:21:17.973"^^xsd:dateTime ;
+  :productName "SSD Disk" ;
+  :productPrice "65"^^xsd:decimal ;
+.
 :Reel
   a rdfs:Class ;
   rdfs:subClassOf :VideoPost ;
@@ -508,7 +509,6 @@
 :Story_1
   a :Story ;
   :postDate "2024-11-12T18:16:18.623"^^xsd:dateTime ;
-  :postedBy :Person_4 ;
 .
 :TextMessage
   a rdfs:Class ;
@@ -522,8 +522,6 @@
   a :TextPost ;
   :postDate "2024-11-10"^^xsd:date ;
   :postTag "Travel, Adventure" ;
-  :postedBy :Administrator_2 ;
-  :writtenBy :Administrator_2 ;
 .
 :User
   a rdfs:Class ;
@@ -599,14 +597,12 @@
   :duration 3.5 ;
   :postDate "2024-11-12T16:15:12.321"^^xsd:dateTime ;
   :postTag "Funny, Cats, Dogs" ;
-  :postedBy :Person_3 ;
 .
 :VideoPost_2
   a :VideoPost ;
   :duration 1.2 ;
   :postDate "2024-11-12T16:15:54.006"^^xsd:dateTime ;
   :postTag "Memes" ;
-  :postedBy :Person_1 ;
 .
 :VoiceMessage
   a rdfs:Class ;
@@ -791,11 +787,6 @@
   rdfs:range xsd:string ;
   rdfs:subPropertyOf :label ;
 .
-:postedBy
-  a rdf:Property ;
-  rdfs:domain :Content ;
-  rdfs:range :Account ;
-.
 :posts
   a rdf:Property ;
   rdfs:domain :Account ;
@@ -886,11 +877,6 @@
   a rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range :Comment ;
-.
-:writtenBy
-  a rdf:Property ;
-  rdfs:domain :Comment ;
-  rdfs:range :Account ;
 .
 :writtenFor
   a rdf:Property ;
