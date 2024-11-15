@@ -9,19 +9,20 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/socialNetwork>
-  a owl:Ontology ;
+  rdf:type owl:Ontology ;
   spin:imports <http://topbraid.org/spin/rdfsplus> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
 :Account
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf :User ;
 .
 :Administrator
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Person ;
 .
 :Administrator_1
-  a :Administrator ;
+  rdf:type :Administrator ;
   :attends :Event_1 ;
   :closeFriend :Administrator_2 ;
   :email "admin1@gmail.com" ;
@@ -29,7 +30,6 @@
   :follows :Page_3 ;
   :forwards :Message_1 ;
   :friend :Administrator_2 ;
-  :hasInterest :Interest_2 ;
   :interacts :Poll_1 ;
   :isInterestedIn :Event_2 ;
   :likes :Story_1 ;
@@ -40,7 +40,7 @@
   :username "Admin2" ;
 .
 :Administrator_2
-  a :Administrator ;
+  rdf:type :Administrator ;
   :attends :Event_1 ;
   :attends :Event_2 ;
   :closeFriend :Administrator_1 ;
@@ -52,8 +52,6 @@
   :follows :Page_3 ;
   :forwards :Message_4 ;
   :friend :Administrator_1 ;
-  :hasInterest :Interest_5 ;
-  :hasInterest :Interest_7 ;
   :isInterestedIn :Event_1 ;
   :isInterestedIn :Event_2 ;
   :isMemberOf :Group_2 ;
@@ -64,32 +62,32 @@
   :username "haruld" ;
 .
 :Advertisement
-  a rdfs:Class ;
-  rdfs:subClassOf :Content ;
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf :Post ;
 .
 :Album
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Content ;
 .
 :Album_1
-  a :Album ;
+  rdf:type :Album ;
   :postDate "2024-09-18T15:21:36.258"^^xsd:dateTime ;
   :postTag "Beers, Fun, Karaoke" ;
 .
 :Announcement
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Post ;
 .
 :Announcement_1
-  a :Announcement ;
+  rdf:type :Announcement ;
   :postDate "2024-11-12T20:37:34.093"^^xsd:dateTime ;
 .
 :Business
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Account ;
 .
 :Business_1
-  a :Business ;
+  rdf:type :Business ;
   :advertises :Product_1 ;
   :attends :Event_1 ;
   :email "info@aristomate.gr" ;
@@ -114,216 +112,180 @@
   :writes :Comment_6 ;
 .
 :Comment
-  a rdfs:Class ;
-  rdfs:subClassOf rdfs:Resource ;
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf :Interaction ;
 .
 :Comment_1
-  a :Comment ;
+  rdf:type :Comment ;
   :writtenFor :Poll_1 ;
 .
 :Comment_2
-  a :Comment ;
+  rdf:type :Comment ;
   :writtenFor :Event_2 ;
 .
 :Comment_3
-  a :Comment ;
+  rdf:type :Comment ;
   :writtenFor :Event_2 ;
 .
 :Comment_4
-  a :Comment ;
+  rdf:type :Comment ;
   :writtenFor :VideoPost_1 ;
 .
 :Comment_5
-  a :Comment ;
+  rdf:type :Comment ;
   :writtenFor :ImagePost_1 ;
 .
 :Comment_6
-  a :Comment ;
+  rdf:type :Comment ;
   :writtenFor :Link_1 ;
 .
 :Content
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf rdfs:Resource ;
 .
 :Content_5
-  a :Content ;
+  rdf:type :Content ;
 .
 :Content_6
-  a :Content ;
+  rdf:type :Content ;
 .
 :Event
-  a rdfs:Class ;
-  rdfs:subClassOf :Content ;
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf :Post ;
 .
 :Event_1
-  a :Event ;
+  rdf:type :Event ;
   :eventDate "2024-11-30"^^xsd:date ;
   :eventName "Techno Party" ;
   :postDate "2024-11-12T16:03:08.145"^^xsd:dateTime ;
   :postTag "Party,Music,Dance" ;
 .
 :Event_2
-  a :Event ;
+  rdf:type :Event ;
   :eventDate "2024-12-05"^^xsd:date ;
   :eventName "Jazz Night" ;
   :postDate "2024-11-11T19:00:00.000"^^xsd:dateTime ;
   :postTag "Music,Live,Concert" ;
 .
+:GIFMessage
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf :PhotoMessage ;
+.
 :Group
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf rdfs:Resource ;
 .
 :Group_1
-  a :Group ;
+  rdf:type :Group ;
   :groupAdmin :Administrator_1 ;
   :groupName "Nature Enthusiasts" ;
 .
 :Group_2
-  a :Group ;
+  rdf:type :Group ;
   :groupAdmin :Administrator_2 ;
   :groupName "Tech Innovators" ;
 .
 :ImagePost
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Post ;
 .
 :ImagePost_1
-  a :ImagePost ;
+  rdf:type :ImagePost ;
   :postDate "2024-10-15"^^xsd:date ;
 .
 :ImagePost_2
-  a :ImagePost ;
+  rdf:type :ImagePost ;
   :postDate "2024-05-05"^^xsd:date ;
 .
-:Interest
-  a rdfs:Class ;
+:Interaction
+  rdf:type rdfs:Class ;
   rdfs:subClassOf rdfs:Resource ;
 .
-:Interest_1
-  a :Interest ;
-  :interestName "Rock" ;
-.
-:Interest_10
-  a :Interest ;
-  :interestName "Volunteering" ;
-.
-:Interest_2
-  a :Interest ;
-  :interestName "Drawing" ;
-.
-:Interest_3
-  a :Interest ;
-  :interestName "Singing" ;
-.
-:Interest_4
-  a :Interest ;
-  :interestName "Drinking" ;
-.
-:Interest_5
-  a :Interest ;
-  :interestName "Gambling" ;
-.
-:Interest_6
-  a :Interest ;
-  :interestName "Gaming" ;
-.
-:Interest_7
-  a :Interest ;
-  :interestName "Guitar" ;
-.
-:Interest_8
-  a :Interest ;
-  :interestName "Drums" ;
-.
-:Interest_9
-  a :Interest ;
-  :interestName "Dancing" ;
-.
 :Link
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Advertisement ;
 .
 :Link_1
-  a :Link ;
+  rdf:type :Link ;
   :postDate "2023-11-12T21:38:34.724"^^xsd:dateTime ;
   :postTag "Motorcycle, Helmets, Safe Driving" ;
   :url "https://www.motoraid.eu/helmets/shoei-gt-air-3-scenario-tc-5?sort=p.price&order=ASC" ;
 .
 :Link_2
-  a :Link ;
+  rdf:type :Link ;
   :postDate "2024-03-19T21:40:05.468"^^xsd:dateTime ;
   :postTag "Motorcycles, Driving, Helmets, Safe Driving" ;
   :url "https://www.motoraid.eu/helmets/hjc-c10-elie-mc1sf?sort=p.price&order=ASC" ;
 .
 :Live
-  a rdfs:Class ;
-  rdfs:subClassOf :Content ;
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf :Post ;
 .
 :Live_1
-  a :Live ;
+  rdf:type :Live ;
   :postDate "2024-08-30T15:22:29.544"^^xsd:dateTime ;
   :postTag "Live,Music" ;
 .
 :Message
-  a rdfs:Class ;
-  rdfs:subClassOf rdfs:Resource ;
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf :Interaction ;
 .
 :Message_1
-  a :PhotoMessage ;
+  rdf:type :PhotoMessage ;
 .
 :Message_2
-  a :TextMessage ;
+  rdf:type :TextMessage ;
   :text "yo" ;
 .
 :Message_3
-  a :TextMessage ;
+  rdf:type :TextMessage ;
   :text "hello!" ;
 .
 :Message_4
-  a :VoiceMessage ;
+  rdf:type :VoiceMessage ;
   :duration "34"^^xsd:decimal ;
 .
 :Music
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Content ;
 .
 :Music_1
-  a :Music ;
+  rdf:type :Music ;
   :musicTitle "Never Gonna Give You Up" ;
   :postDate "2024-11-12T21:12:35.899"^^xsd:dateTime ;
   :postTag "bestmusic" ;
 .
 :Music_2
-  a :Music ;
+  rdf:type :Music ;
   :musicTitle "Diamonds" ;
   :postDate "2024-09-12T21:14:05.682"^^xsd:dateTime ;
 .
 :Page
-  a rdfs:Class ;
-  rdfs:subClassOf rdfs:Resource ;
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf :Content ;
 .
 :Page_1
-  a :Page ;
+  rdf:type :Page ;
   :pageName "Global Travel Blog" ;
 .
 :Page_2
-  a :Page ;
+  rdf:type :Page ;
   :pageName "Global Environmental News" ;
 .
 :Page_3
-  a :Page ;
+  rdf:type :Page ;
   :pageName "Oceanic Conservation" ;
 .
 :Page_4
-  a :Page ;
+  rdf:type :Page ;
   :pageName "Wanderlust Chronicles" ;
 .
 :Person
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Account ;
 .
 :Person_1
-  a :Person ;
+  rdf:type :Person ;
   :attends :Event_1 ;
   :closeFriend :Person_2 ;
   :email "test@gmail.com" ;
@@ -333,10 +295,6 @@
   :friend :Person_2 ;
   :friend :Person_3 ;
   :friend :Person_4 ;
-  :hasInterest :Interest_6 ;
-  :hasInterest :Interest_7 ;
-  :hasInterest :Interest_8 ;
-  :hasInterest :Interest_9 ;
   :inRelationshipWith :Administrator_1 ;
   :interacts :Music_2 ;
   :isInterestedIn :Event_1 ;
@@ -354,7 +312,7 @@
   :writes :Comment_1 ;
 .
 :Person_2
-  a :Person ;
+  rdf:type :Person ;
   :attends :Event_1 ;
   :closeFriend :Person_1 ;
   :email "chef_italiano@gmail.com" ;
@@ -362,9 +320,6 @@
   :follows :Page_2 ;
   :forwards :Message_2 ;
   :friend :Person_3 ;
-  :hasInterest :Interest_2 ;
-  :hasInterest :Interest_5 ;
-  :hasInterest :Interest_8 ;
   :inRelationshipWith :Person_1 ;
   :interacts :Announcement_1 ;
   :isInterestedIn :Event_2 ;
@@ -383,7 +338,7 @@
   :writes :Comment_1 ;
 .
 :Person_3
-  a :Person ;
+  rdf:type :Person ;
   :attends :Event_1 ;
   :closeFriend :Person_2 ;
   :email "gamer_94@gmail.com" ;
@@ -391,9 +346,6 @@
   :follows :Page_3 ;
   :forwards :Message_2 ;
   :friend :Person_4 ;
-  :hasInterest :Interest_10 ;
-  :hasInterest :Interest_5 ;
-  :hasInterest :Interest_9 ;
   :isInterestedIn :Event_2 ;
   :isMemberOf :Group_2 ;
   :likes :ImagePost_2 ;
@@ -408,7 +360,7 @@
   :writes :Comment_3 ;
 .
 :Person_4
-  a :Person ;
+  rdf:type :Person ;
   :attends :Event_2 ;
   :closeFriend :Person_1 ;
   :closeFriend :Person_2 ;
@@ -420,12 +372,6 @@
   :friend :Person_2 ;
   :friend :Person_3 ;
   :friend :Person_5 ;
-  :hasInterest :Interest_4 ;
-  :hasInterest :Interest_5 ;
-  :hasInterest :Interest_6 ;
-  :hasInterest :Interest_7 ;
-  :hasInterest :Interest_8 ;
-  :hasInterest :Interest_9 ;
   :isInterestedIn :Event_1 ;
   :isInterestedIn :Event_2 ;
   :isMemberOf :Group_2 ;
@@ -439,15 +385,13 @@
   :writes :Comment_6 ;
 .
 :Person_5
-  a :Person ;
+  rdf:type :Person ;
   :attends :Event_1 ;
   :closeFriend :Person_1 ;
   :email "eco_warrior@example.com" ;
   :familyWith :Person_6 ;
   :follows :Page_4 ;
   :friend :Person_4 ;
-  :hasInterest :Interest_1 ;
-  :hasInterest :Interest_3 ;
   :isInterestedIn :Event_1 ;
   :isMemberOf :Group_1 ;
   :likes :ImagePost_2 ;
@@ -458,109 +402,106 @@
   :writes :Announcement_1 ;
 .
 :PhotoMessage
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Message ;
 .
 :Poll
-  a rdfs:Class ;
-  rdfs:subClassOf :Content ;
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf :Post ;
 .
 :Poll_1
-  a :Poll ;
+  rdf:type :Poll ;
   :eventDate "2024-11-12"^^xsd:date ;
   :eventName "Public Opinion Poll on Climate Change" ;
   :pollOptions "Strongly Agree, Agree, Neutral, Disagree, Strongly Disagree" ;
   :postDate "2024-10-11T15:25:53.641"^^xsd:dateTime ;
 .
+:Poll_2
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf :Story ;
+.
 :Post
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Content ;
 .
 :Product
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Advertisement ;
 .
 :Product_1
-  a :Product ;
+  rdf:type :Product ;
   :postDate "2024-11-07T15:21:17.973"^^xsd:dateTime ;
   :productName "Wireless Headphones" ;
   :productPrice 99.99 ;
 .
 :Product_2
-  a :Product ;
+  rdf:type :Product ;
   :postDate "2024-10-07T15:21:17.973"^^xsd:dateTime ;
   :productName "Motorcycle Helmet" ;
   :productPrice "150"^^xsd:decimal ;
 .
 :Product_3
-  a :Product ;
+  rdf:type :Product ;
   :postDate "2024-11-07T15:21:17.973"^^xsd:dateTime ;
   :productName "SSD Disk" ;
   :productPrice "65"^^xsd:decimal ;
 .
 :Reel
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :VideoPost ;
 .
 :Story
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Content ;
 .
 :Story_1
-  a :Story ;
+  rdf:type :Story ;
   :postDate "2024-11-12T18:16:18.623"^^xsd:dateTime ;
 .
 :TextMessage
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Message ;
 .
 :TextPost
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Post ;
 .
 :TextPost_1
-  a :TextPost ;
+  rdf:type :TextPost ;
   :postDate "2024-11-10"^^xsd:date ;
   :postTag "Travel, Adventure" ;
 .
 :User
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf rdfs:Resource ;
 .
 :User_1
-  a :User ;
+  rdf:type :User ;
   :country "Greece" ;
   :dateOfBirth "2003-04-06"^^xsd:date ;
   :gender "M" ;
-  :hasAccount :Business_1 ;
-  :hasAccount :Person_1 ;
   :name "George Pavlou" ;
 .
 :User_2
-  a :User ;
+  rdf:type :User ;
   :country "Greece" ;
   :dateOfBirth "1997-12-06"^^xsd:date ;
   :gender "M" ;
-  :hasAccount :Person_3 ;
-  :hasAccount :Person_5 ;
   :name "Matthaios Vasilis" ;
 .
 :User_3
-  a :User ;
+  rdf:type :User ;
   :country "Brazil" ;
   :dateOfBirth "2004-11-12"^^xsd:date ;
   :gender "F" ;
-  :hasAccount :Administrator_1 ;
-  :hasAccount :Person_2 ;
-  :hasAccount :Person_4 ;
   :name "Micha Lamos" ;
 .
 :VerifiedAccount
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Account ;
 .
 :VerifiedAccount_1
-  a :VerifiedAccount ;
+  rdf:type :VerifiedAccount ;
   :attends :Event_1 ;
   :email "verifiedaccount@gmail.com" ;
   :follows :Page_1 ;
@@ -581,305 +522,290 @@
   :username "jabba" ;
 .
 :VideoMessage
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Message ;
 .
 :VideoMessage_1
-  a :VideoMessage ;
+  rdf:type :VideoMessage ;
   :duration "95"^^xsd:decimal ;
 .
 :VideoPost
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Post ;
 .
 :VideoPost_1
-  a :VideoPost ;
+  rdf:type :VideoPost ;
   :duration 3.5 ;
   :postDate "2024-11-12T16:15:12.321"^^xsd:dateTime ;
   :postTag "Funny, Cats, Dogs" ;
 .
 :VideoPost_2
-  a :VideoPost ;
+  rdf:type :VideoPost ;
   :duration 1.2 ;
   :postDate "2024-11-12T16:15:54.006"^^xsd:dateTime ;
   :postTag "Memes" ;
 .
 :VoiceMessage
-  a rdfs:Class ;
+  rdf:type rdfs:Class ;
   rdfs:subClassOf :Message ;
 .
 :advertises
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Business ;
   rdfs:range :Product ;
 .
 :attends
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range :Event ;
 .
 :closeFriend
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Person ;
   rdfs:range :Person ;
   rdfs:subPropertyOf :friend ;
 .
 :country
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:range xsd:string ;
   rdfs:subPropertyOf :info ;
 .
 :dateOfBirth
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:range xsd:date ;
   rdfs:subPropertyOf :info ;
 .
 :duration
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :VideoMessage ;
   rdfs:domain :VideoPost ;
   rdfs:domain :VoiceMessage ;
   rdfs:range xsd:decimal ;
 .
 :email
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range xsd:string ;
 .
 :eventDate
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Event ;
   rdfs:range xsd:date ;
 .
 :eventName
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Event ;
   rdfs:range xsd:string ;
 .
 :familyWith
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Person ;
   rdfs:range :Person ;
   rdfs:subPropertyOf :friend ;
 .
 :follows
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range :Page ;
 .
 :forwards
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Person ;
   rdfs:range :Message ;
   rdfs:subPropertyOf :sends ;
 .
 :friend
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Person ;
   rdfs:range :Person ;
 .
 :gender
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:range xsd:string ;
   rdfs:subPropertyOf :info ;
 .
 :groupAdmin
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Group ;
   rdfs:range :Administrator ;
 .
 :groupName
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Group ;
   rdfs:range xsd:string ;
 .
-:hasAccount
-  a rdf:Property ;
-  rdfs:domain :User ;
-  rdfs:range :Account ;
-.
-:hasInterest
-  a rdf:Property ;
-  rdfs:domain :Person ;
-  rdfs:range :Interest ;
-.
 :inRelationshipWith
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:subPropertyOf :friend ;
 .
 :info
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :User ;
   rdfs:range xsd:string ;
 .
 :interacts
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range :Content ;
 .
-:interestName
-  a rdf:Property ;
-  rdfs:domain :Interest ;
-  rdfs:range xsd:string ;
-.
 :isInterestedIn
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range :Event ;
 .
 :isMemberOf
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range :Group ;
 .
 :isTaggedIn
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range :Content ;
 .
 :label
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Advertisement ;
   rdfs:domain :Post ;
   rdfs:domain :Story ;
   rdfs:range xsd:string ;
 .
 :likes
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range :Content ;
   rdfs:subPropertyOf :interacts ;
 .
 :musicTitle
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Music ;
   rdfs:range xsd:string ;
 .
 :name
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Group ;
   rdfs:domain :Page ;
   rdfs:subPropertyOf :info ;
 .
 :pageName
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Page ;
   rdfs:range xsd:string ;
 .
 :password
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range xsd:string ;
 .
 :pollOptions
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Poll ;
   rdfs:range xsd:string ;
 .
 :postDate
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Content ;
   rdfs:range xsd:dateTime ;
 .
 :postTag
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Content ;
   rdfs:range xsd:string ;
   rdfs:subPropertyOf :label ;
 .
 :posts
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range :Content ;
 .
 :productName
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Product ;
   rdfs:range xsd:string ;
 .
 :productPrice
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Product ;
   rdfs:range xsd:decimal ;
 .
 :reacts
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range :Content ;
   rdfs:subPropertyOf :interacts ;
 .
 :registrationDate
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:domain :Group ;
   rdfs:domain :Page ;
   rdfs:range xsd:date ;
 .
 :relationshipStatus
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Person ;
   rdfs:range xsd:string ;
 .
 :replies
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Person ;
   rdfs:range :Message ;
   rdfs:subPropertyOf :sends ;
 .
 :reports
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range :Content ;
   rdfs:subPropertyOf :interacts ;
 .
 :sends
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Person ;
   rdfs:range :Content ;
   rdfs:range :Message ;
 .
 :sentTo
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Content ;
   rdfs:domain :Message ;
   rdfs:range :Person ;
 .
 :shares
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range :Content ;
   rdfs:subPropertyOf :interacts ;
 .
 :text
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Comment ;
   rdfs:domain :TextMessage ;
   rdfs:range xsd:string ;
 .
 :url
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Link ;
   rdfs:range xsd:string ;
 .
 :username
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range xsd:string ;
 .
 :visibility
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Content ;
   rdfs:domain :Group ;
   rdfs:domain :Page ;
   rdfs:range xsd:string ;
 .
 :writes
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Account ;
   rdfs:range :Comment ;
 .
 :writtenFor
-  a rdf:Property ;
+  rdf:type rdf:Property ;
   rdfs:domain :Comment ;
   rdfs:range :Content ;
 .
