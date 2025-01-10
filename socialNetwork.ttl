@@ -15,7 +15,6 @@
 .
 :Account
   rdf:type rdfs:Class ;
-  rdfs:subClassOf :User ;
 .
 :Administrator
   rdf:type rdfs:Class ;
@@ -84,7 +83,7 @@
 .
 :Business
   rdf:type rdfs:Class ;
-  rdfs:subClassOf :Account ;
+  rdfs:subClassOf :User ;
 .
 :Business_1
   rdf:type :Business ;
@@ -282,7 +281,7 @@
 .
 :Person
   rdf:type rdfs:Class ;
-  rdfs:subClassOf :Account ;
+  rdfs:subClassOf :User ;
 .
 :Person_1
   rdf:type :Person ;
@@ -683,8 +682,7 @@
 .
 :name
   rdf:type rdf:Property ;
-  rdfs:domain :Group ;
-  rdfs:domain :Page ;
+  rdfs:domain :User ;
   rdfs:subPropertyOf :info ;
 .
 :pageName
