@@ -1,1 +1,1 @@
-# Sematic-Web-Project
+# Semantic-Web-Project
